@@ -25,29 +25,36 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RestaurantReviewController {
 
-  private final RestaurantReviewControllerContract restaurantReviewControllerContract;
+    private final RestaurantReviewControllerContract restaurantReviewControllerContract;
 
-  @GetMapping
-  @Operation(summary = "Get all customers", description = "Retrieves all active customers")
-  public ResponseEntity<RestResponse<List<RestaurantReviewDTO>>> getAllRestaurantReviews() {
-    List<RestaurantReviewDTO> allRestaurantReviews = restaurantReviewControllerContract.getAllRestaurantReviews();
-    return ResponseEntity.ok(RestResponse.of(allRestaurantReviews));
-  }
+    @GetMapping
+    @Operation(summary = "Get all reviews", description = "Retrieves all restaurant reviews")
+    public ResponseEntity<RestResponse<List<RestaurantReviewDTO>>> getAllRestaurantReviews() {
+        List<RestaurantReviewDTO> allRestaurantReviews = restaurantReviewControllerContract.getAllRestaurantReviews();
+        return ResponseEntity.ok(RestResponse.of(allRestaurantReviews));
+    }
 
-  @GetMapping("/{id}")
-  public ResponseEntity<RestResponse<RestaurantReviewDTO>> getRestaurantReviewById(@PathVariable @Positive Long id) {
-    RestaurantReviewDTO customerById = restaurantReviewControllerContract.getRestaurantReviewById(id);
-    return ResponseEntity.ok(RestResponse.of(customerById));
-  }
+    @GetMapping("/{id}")
+    public ResponseEntity<RestResponse<RestaurantReviewDTO>> getRestaurantReviewById(@PathVariable Long id) {
+        RestaurantReviewDTO customerById = restaurantReviewControllerContract.getRestaurantReviewById(id);
+        return ResponseEntity.ok(RestResponse.of(customerById));
+    }
 
-  @PostMapping
-  public ResponseEntity<RestResponse<RestaurantReviewDTO>> saveRestaurantReview(@Valid @RequestBody RestaurantReviewSaveRequest request) {
-    RestaurantReviewDTO customerDTO = restaurantReviewControllerContract.saveRestaurantReview(request);
-    return ResponseEntity.ok(RestResponse.of(customerDTO));
-  }
+    @PostMapping
+    public ResponseEntity<RestResponse<RestaurantReviewDTO>> saveRestaurantReview(@RequestBody RestaurantReviewSaveRequest request) {
+        RestaurantReviewDTO customerDTO = restaurantReviewControllerContract.saveRestaurantReview(request);
+        return ResponseEntity.ok(RestResponse.of(customerDTO));
+    }
 
-  @DeleteMapping("/{id}")
-  public void deleteRestaurantReview(@PathVariable @NotNull Long id) {
-    restaurantReviewControllerContract.deleteRestaurantReview(id);
-  }
+    @PutMapping("/{id}")
+    public ResponseEntity<RestResponse<RestaurantReviewDTO>> updateRestaurantReview(@PathVariable Long id, @RequestBody RestaurantReviewUpdateRequest request) {
+        RestaurantReviewDTO customerDTO = restaurantReviewControllerContract.updateRestaurantReview(id, request);
+        return ResponseEntity.ok(RestResponse.of(customerDTO));
+
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteRestaurantReview(@PathVariable Long id) {
+        restaurantReviewControllerContract.deleteRestaurantReview(id);
+    }
 }

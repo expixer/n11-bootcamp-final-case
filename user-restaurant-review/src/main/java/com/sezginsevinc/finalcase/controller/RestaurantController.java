@@ -35,4 +35,9 @@ public class RestaurantController {
         return ResponseEntity.ok(RestResponse.of(restaurantControllerContract.save(restaurant)));
     }
 
+    @PutMapping
+    public ResponseEntity<RestResponse<Restaurant>> update(@RequestBody Restaurant restaurant) {
+        return ResponseEntity.ok(RestResponse.of(restaurantControllerContract.update(restaurant)));
+    }
+
 }

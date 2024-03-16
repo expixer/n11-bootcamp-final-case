@@ -28,11 +28,11 @@ public abstract class BaseEntityService<E extends BaseEntity, R extends JpaRepos
     LocalDateTime now = LocalDateTime.now();
     if (entity.getId() == null) {
       // yeni kayıt
-      baseAdditionalFields.setCreateDate(now);
+      baseAdditionalFields.setCreatedAt(now);
       //entity.getBaseAdditionalFields().setCreatorId();
     }
 
-    baseAdditionalFields.setUpdateDate(now);
+    baseAdditionalFields.setUpdatedAt(now);
     //entity.getBaseAdditionalFields().setUpdaterId();
     entity.setBaseAdditionalFields(baseAdditionalFields);
 

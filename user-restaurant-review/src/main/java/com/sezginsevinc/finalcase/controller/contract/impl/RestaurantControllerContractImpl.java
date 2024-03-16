@@ -32,4 +32,9 @@ public class RestaurantControllerContractImpl implements RestaurantControllerCon
     public Restaurant save(Restaurant restaurant) {
         return restaurantService.save(restaurant);
     }
+
+    @Override
+    public Restaurant update(Restaurant restaurant) {
+        return restaurantService.update(restaurant);
+    }
 }

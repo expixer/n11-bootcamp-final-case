@@ -38,4 +38,8 @@ public class RestaurantService {
   public Restaurant save(Restaurant restaurant) {
     return restaurantClient.save(restaurant);
   }
+
+    public Restaurant update(Restaurant restaurant) {
+        return restaurantClient.save(restaurant);
+    }
 }

@@ -40,7 +40,6 @@ public class RestaurantReviewControllerContractImpl implements RestaurantReviewC
     }
 
 
-
     @Override
     public RestaurantReviewDTO getRestaurantReviewById(Long id) {
         RestaurantReview restaurantReview = restaurantReviewEntityService.findByIdWithControl(id);

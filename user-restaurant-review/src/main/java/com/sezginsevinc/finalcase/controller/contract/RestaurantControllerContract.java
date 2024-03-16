@@ -12,4 +12,6 @@ public interface RestaurantControllerContract {
     Restaurant getRestaurantById(String id);
 
     Restaurant save(Restaurant restaurant);
+
+    Restaurant update(Restaurant restaurant);
 }

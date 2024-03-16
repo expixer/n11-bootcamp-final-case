@@ -11,8 +11,8 @@ import lombok.Setter;
 @Setter
 public class BaseAdditionalFields {
 
-  private LocalDateTime createDate;
-  private LocalDateTime updateDate;
+  private LocalDateTime createdAt;
+  private LocalDateTime updatedAt;
   private Long creatorId;
   private Long updaterId;
 }
