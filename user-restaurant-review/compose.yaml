@@ -1,3 +1,4 @@
+version: '3'
 services:
   postgres:
     image: 'postgres:latest'
@@ -7,3 +8,13 @@ services:
       - 'POSTGRES_USER=myuser'
     ports:
       - '5432'
+  solr:
+    image: solr:latest
+    container_name: restaurant_solr
+    ports:
+      - "8983:8983"
+    volumes:
+      - ./data:/var/solr
+    command:
+      - solr-precreate
+      - restaurants
