@@ -9,7 +9,7 @@ import lombok.Setter;
 @MappedSuperclass
 @Getter
 @Setter
-public abstract class BaseEntity implements BaseModel {
+public abstract class BaseEntity {
 
   @Embedded
   private BaseAdditionalFields baseAdditionalFields;

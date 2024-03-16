@@ -1,4 +1,4 @@
-package com.sezginsevinc.finalcase.service.entityservice;
+package com.sezginsevinc.finalcase.service.entity;
 
 import com.sezginsevinc.finalcase.entity.RestaurantReview;
 import com.sezginsevinc.finalcase.general.BaseEntityService;
@@ -14,7 +14,6 @@ public class RestaurantReviewEntityService extends BaseEntityService<RestaurantR
   protected RestaurantReviewEntityService(RestaurantReviewRepository repository) {
     super(repository);
   }
-
 
     public List<RestaurantReview> getRestaurantReviewsByRestaurantId(Long restaurantId) {
         return getRepository().findByRestaurantId(restaurantId);

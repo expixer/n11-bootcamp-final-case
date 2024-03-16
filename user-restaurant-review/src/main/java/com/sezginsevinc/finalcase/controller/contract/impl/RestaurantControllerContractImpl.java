@@ -6,7 +6,7 @@ import com.sezginsevinc.finalcase.mapper.RestaurantMapper;
 
 import java.util.List;
 
-import com.sezginsevinc.finalcase.service.RestaurantService;
+import com.sezginsevinc.finalcase.service.entity.RestaurantEntityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,26 +15,26 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class RestaurantControllerContractImpl implements RestaurantControllerContract {
 
-    private final RestaurantService restaurantService;
+    private final RestaurantEntityService restaurantEntityService;
 
     @Override
     public List<Restaurant> getAllRestaurants() {
-        List<Restaurant> restaurantList = restaurantService.findAll();
+        List<Restaurant> restaurantList = restaurantEntityService.findAll();
         return RestaurantMapper.INSTANCE.convertToRestaurant(restaurantList);
     }
 
     @Override
     public Restaurant getRestaurantById(String id) {
-        return restaurantService.findById(id);
+        return restaurantEntityService.findById(id);
     }
 
     @Override
     public Restaurant save(Restaurant restaurant) {
-        return restaurantService.save(restaurant);
+        return restaurantEntityService.save(restaurant);
     }
 
     @Override
     public Restaurant update(Restaurant restaurant) {
-        return restaurantService.update(restaurant);
+        return restaurantEntityService.update(restaurant);
     }
 }

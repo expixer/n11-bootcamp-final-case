@@ -1,4 +1,4 @@
-package com.sezginsevinc.finalcase.service.entityservice;
+package com.sezginsevinc.finalcase.service.entity;
 
 import com.sezginsevinc.finalcase.repository.CustomerRepository;
 import com.sezginsevinc.finalcase.entity.Customer;

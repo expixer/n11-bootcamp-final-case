@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -61,7 +63,7 @@ public class GeneralControllerAdvice extends ResponseEntityExceptionHandler {
   @ExceptionHandler
   public final ResponseEntity<Object> handleAllExceptions(TransactionSystemException e, WebRequest request) {
 
-    String message = e.getOriginalException().getCause().getMessage();
+    String message = Objects.requireNonNull(e.getOriginalException()).getCause().getMessage();
     String description = request.getDescription(false);
 
     var generalErrorMessages = new GeneralErrorMessages(LocalDateTime.now(), message, description);

@@ -1,4 +1,4 @@
-package com.sezginsevinc.finalcase.service;
+package com.sezginsevinc.finalcase.service.entity;
 
 import com.sezginsevinc.finalcase.client.RestaurantClient;
 
@@ -6,14 +6,13 @@ import java.util.List;
 
 import com.sezginsevinc.finalcase.entity.Restaurant;
 import com.sezginsevinc.finalcase.entity.RestaurantReview;
-import com.sezginsevinc.finalcase.service.entityservice.RestaurantReviewEntityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
 @Service
 @RequiredArgsConstructor
-public class RestaurantService {
+public class RestaurantEntityService {
 
   private final RestaurantClient restaurantClient;
 

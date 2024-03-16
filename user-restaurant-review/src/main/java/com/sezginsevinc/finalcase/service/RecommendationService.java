@@ -1,9 +1,9 @@
 package com.sezginsevinc.finalcase.service;
 
-import com.sezginsevinc.finalcase.client.RestaurantClient;
 import com.sezginsevinc.finalcase.entity.Customer;
 import com.sezginsevinc.finalcase.entity.Restaurant;
-import com.sezginsevinc.finalcase.service.entityservice.CustomerEntityService;
+import com.sezginsevinc.finalcase.service.entity.CustomerEntityService;
+import com.sezginsevinc.finalcase.service.entity.RestaurantEntityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +16,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class RecommendationService {
 
-    private final RestaurantService restaurantService;
+    private final RestaurantEntityService restaurantEntityService;
 
     private final CustomerEntityService customerEntityService;
 
     public List<Restaurant> getRecommendations(Long userId) {
         Customer customer = customerEntityService.findByIdWithControl(userId);
-        List<Restaurant> restaurants = restaurantService.findAll();
+        List<Restaurant> restaurants = restaurantEntityService.findAll();
 
         return restaurants.stream()
                 .filter(r -> calculateDistance(customer.getLatitude(), customer.getLongitude(), new BigDecimal(r.getLatitude()), new BigDecimal(r.getLongitude())).compareTo(BigDecimal.TEN) <= 0)
@@ -50,7 +50,7 @@ public class RecommendationService {
 
     private BigDecimal calculateScore(Customer customer, Restaurant restaurant) {
         BigDecimal distanceScore = calculateDistance(customer.getLatitude(), customer.getLongitude(), new BigDecimal(restaurant.getLatitude()), new BigDecimal(restaurant.getLongitude())).divide(BigDecimal.TEN, 14, RoundingMode.HALF_UP);
-        BigDecimal ratingScore = BigDecimal.valueOf(restaurantService.getAverageRating(Long.valueOf(restaurant.getId()))).divide(BigDecimal.valueOf(5), 14, RoundingMode.HALF_UP);
+        BigDecimal ratingScore = BigDecimal.valueOf(restaurantEntityService.getAverageRating(Long.valueOf(restaurant.getId()))).divide(BigDecimal.valueOf(5), 14, RoundingMode.HALF_UP);
 
         return ratingScore.multiply(BigDecimal.valueOf(0.7)).add(distanceScore.multiply(BigDecimal.valueOf(0.3)).subtract(BigDecimal.valueOf(1)).multiply(BigDecimal.valueOf(-0.3)));
     }

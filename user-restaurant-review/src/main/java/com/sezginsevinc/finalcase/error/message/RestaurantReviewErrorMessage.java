@@ -1,4 +1,4 @@
-package com.sezginsevinc.finalcase.error.errormessage;
+package com.sezginsevinc.finalcase.error.message;
 
 import com.sezginsevinc.finalcase.general.BaseErrorMessage;
 import lombok.Getter;

@@ -6,7 +6,7 @@ import com.sezginsevinc.finalcase.dto.request.RestaurantReviewSaveRequest;
 import com.sezginsevinc.finalcase.dto.request.RestaurantReviewUpdateRequest;
 import com.sezginsevinc.finalcase.entity.RestaurantReview;
 import com.sezginsevinc.finalcase.mapper.RestaurantReviewMapper;
-import com.sezginsevinc.finalcase.service.entityservice.RestaurantReviewEntityService;
+import com.sezginsevinc.finalcase.service.entity.RestaurantReviewEntityService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

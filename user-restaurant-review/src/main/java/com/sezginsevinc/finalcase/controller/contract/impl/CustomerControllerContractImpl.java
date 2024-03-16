@@ -4,12 +4,12 @@ import com.sezginsevinc.finalcase.controller.contract.CustomerControllerContract
 import com.sezginsevinc.finalcase.dto.CustomerDTO;
 import com.sezginsevinc.finalcase.dto.request.CustomerUpdatePasswordRequest;
 import com.sezginsevinc.finalcase.entity.Customer;
-import com.sezginsevinc.finalcase.error.errormessage.RestaurantReviewErrorMessage;
+import com.sezginsevinc.finalcase.error.message.RestaurantReviewErrorMessage;
 import com.sezginsevinc.finalcase.general.BusinessException;
 import com.sezginsevinc.finalcase.mapper.CustomerMapper;
 import com.sezginsevinc.finalcase.dto.request.CustomerSaveRequest;
 import com.sezginsevinc.finalcase.dto.request.CustomerUpdateRequest;
-import com.sezginsevinc.finalcase.service.entityservice.CustomerEntityService;
+import com.sezginsevinc.finalcase.service.entity.CustomerEntityService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
