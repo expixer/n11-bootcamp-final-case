@@ -6,6 +6,9 @@ import com.sezginsevinc.finalcase.dto.request.CustomerUpdatePasswordRequest;
 import com.sezginsevinc.finalcase.general.RestResponse;
 import com.sezginsevinc.finalcase.dto.request.CustomerSaveRequest;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -41,6 +44,41 @@ public class CustomerController {
     }
 
     @PostMapping
+    @Operation(
+            description = "Creates new customer",
+            summary = "Create",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+                    description = "Customers",
+                    content = {
+                            @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(
+                                            implementation = CustomerSaveRequest.class
+                                    ),
+                                    examples = {
+                                            @ExampleObject(
+                                                    name = "new customer",
+                                                    summary = "Normal",
+                                                    description = "Complete request with all available fields",
+                                                    value = "{\n"
+                                                            + "  \"name\": \"sezgin\",\n"
+                                                            + "  \"surname\": \"sevinç\",\n"
+                                                            + "  \"birthDate\": \"1997-04-10\",\n"
+                                                            + "  \"username\": \"btural\",\n"
+                                                            + "  \"identityNo\": \"20123456788\",\n"
+                                                            + "  \"password\": \"1234\",\n"
+                                                            + "  \"phoneNumber\": \"5675786767\",\n"
+                                                            + "  \"latitude\": \"39.642913576138824\",\n"
+                                                            + "  \"longitude\": \"27.882731056763152\",\n"
+                                                            + "  \"email\": \"sezgin@gmail.com\"\n"
+                                                            + "}"
+                                            )
+                                    }
+                            )
+                    }
+            )
+    )
+
     public ResponseEntity<RestResponse<CustomerDTO>> saveCustomer(@RequestBody CustomerSaveRequest request) {
         CustomerDTO customerDTO = customerControllerContract.saveCustomer(request);
         return ResponseEntity.ok(RestResponse.of(customerDTO));

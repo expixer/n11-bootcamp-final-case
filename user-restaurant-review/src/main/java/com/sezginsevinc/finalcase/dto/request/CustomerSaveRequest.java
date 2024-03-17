@@ -25,18 +25,17 @@ public record CustomerSaveRequest(
         String username,
 
         @NotBlank(message = "Identity number cannot be blank")
-        @Pattern(regexp = "^[0-9]{11}$", message = "Identity number must be 11 digits") //Must be 11 digits
+        @Length(min = 11, max = 11, message = "Identity number must be 11 digits")
         String identityNo,
 
         @NotBlank(message = "Password cannot be blank")
-        @Pattern(
-                regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$",
-                message = "Password must be at least 8 characters long and contain at least one digit, one lowercase letter, one uppercase letter and one special character"
-        ) // At least 8 characters long, at least one digit, one lowercase letter, one uppercase letter and one special character
+// At least 8 characters long, at least one digit, one lowercase letter, one uppercase letter and one special character
+        @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$", message = "Password must be at least 8 characters long, at least one digit, one lowercase letter, one uppercase letter and one special character")
         String password,
 
         @NotBlank(message = "Phone number cannot be blank")
-        @Pattern(regexp = "^\\+?\\d+$", message = "Phone number must contain only digits and optionally start with a plus sign") // only digits and optionally start with a plus sign
+        // only digits and optionally start with a plus sign
+        @Pattern(regexp = "^(\\+)?[0-9]+$", message = "Phone number must contain only digits and optionally start with a plus sign")
         String phoneNumber,
 
         @NotBlank(message = "Email cannot be blank")
