@@ -1,4 +1,4 @@
-package com.sezginsevinc.restaurant;
+package com.sezginsevinc.finalcase;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

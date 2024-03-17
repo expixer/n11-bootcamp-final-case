@@ -29,7 +29,7 @@ public record CustomerSaveRequest(
         String identityNo,
 
         @NotBlank(message = "Password cannot be blank")
-// At least 8 characters long, at least one digit, one lowercase letter, one uppercase letter and one special character
+        // At least 8 characters long, at least one digit, one lowercase letter, one uppercase letter and one special character
         @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$", message = "Password must be at least 8 characters long, at least one digit, one lowercase letter, one uppercase letter and one special character")
         String password,
 
