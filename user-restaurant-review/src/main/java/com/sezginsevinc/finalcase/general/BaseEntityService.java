@@ -27,13 +27,10 @@ public abstract class BaseEntityService<E extends BaseEntity, R extends JpaRepos
 
     LocalDateTime now = LocalDateTime.now();
     if (entity.getId() == null) {
-      // yeni kayıt
       baseAdditionalFields.setCreatedAt(now);
-      //entity.getBaseAdditionalFields().setCreatorId();
     }
 
     baseAdditionalFields.setUpdatedAt(now);
-    //entity.getBaseAdditionalFields().setUpdaterId();
     entity.setBaseAdditionalFields(baseAdditionalFields);
 
     entity = repository.save(entity);
@@ -51,7 +48,6 @@ public abstract class BaseEntityService<E extends BaseEntity, R extends JpaRepos
       entity = optionalE.get();
     } else {
       throw new ItemNotFoundException(GeneralErrorMessage.ITEM_NOT_FOUND);
-      //throw new ItemNotFoundException("Data bulunamadı!");
     }
 
     return entity;
